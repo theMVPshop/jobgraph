@@ -34,7 +34,7 @@ class JobSearch extends React.Component {
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
                   <span className="mdc-notched-outline__notch">
-                    <span className="mdc-floating-label" id="my-label-id">
+                    <span className="mdc-floating-label searchColor" id="my-label-id">
                       Search
                     </span>
                   </span>

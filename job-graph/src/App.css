@@ -99,3 +99,7 @@
 * {
   box-sizing: border-box;
 }
+
+.searchColor {
+  color: white !important;
+}
