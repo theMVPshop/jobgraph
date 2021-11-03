@@ -74,6 +74,9 @@
 .text-field-outlined .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
   color: var(--mdc-theme-primary);
 }
+.mdc-floating-label {
+  padding-right: 10px;
+}
 
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
