@@ -1,6 +1,9 @@
 import React from 'react'
+import ChartView from './chartView';
+
 
 function GraphChart() {
+
     //#region Original JS
     //example db array
     const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
@@ -114,9 +117,10 @@ function GraphChart() {
         config
     );
     //#endregion
-    return {
+    return (
         myChart
-    };
-}
+    )
+        
+};
 
-export default GraphChart();
+export default GraphChart;
