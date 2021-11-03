@@ -40,7 +40,7 @@ app.get("/jobs", (req, res) => {
     const searchTerm = req.body.searchTerm;
     const timeStamp = new Date();
 
-    //adding search into database
+    //adding client Data into database
     db.query(
       "INSERT INTO employees21.job_search (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
       [location, searchTerm, timeStamp],
@@ -56,7 +56,6 @@ app.get("/jobs", (req, res) => {
     await page.goto(
       `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
     );
-    await page.screenshot({ path: "example15.png" });
 
     const job_count = await page.evaluate(() => {
       const elements = document.querySelector("#searchCountPages");
@@ -65,8 +64,8 @@ app.get("/jobs", (req, res) => {
     });
 
     db.query(
-      `INSERT INTO employees21.job_results (jobs) VALUES (${job_count})`,
-      [job_count],
+      "INSERT INTO employees21.job_results (jobs) VALUES (?)",
+      [`${job_count}`],
       (err, result) => {
         if (err) {
           console.log(err);
