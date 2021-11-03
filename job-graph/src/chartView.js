@@ -1,4 +1,5 @@
 import React from 'react';
+import * as mdc from 'material-components-web';
 
 class ChartView extends React.Component {
   componentDidMount() {
@@ -8,7 +9,7 @@ class ChartView extends React.Component {
   render() {
 
     return (
-        <><div class="chart-container">
+        <><div className="chart-container ">
             <canvas id="chart"></canvas>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -17,3 +18,4 @@ class ChartView extends React.Component {
   }
 }
 
+export default ChartView;
