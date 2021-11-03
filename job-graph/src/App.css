@@ -1,41 +1,56 @@
 .job-search {
   align-items: flex-start;
-  background-color: var(--white);
+  background: linear-gradient(242.55deg, #0f2b69 40.51%, #808080 89.76%);
+  background-color: rgba(255,255,255,1.0);
   display: flex;
+  flex-direction: column;
+  height: 871px;
+  padding: 20px 22.4px;
   width: 1366px;
+}
+
+.flex-row {
+  align-items: flex-start;
+  display: flex;
+  min-width: 1318px;
+}
+
+.icon-awesome-joget {
+  height: 41px;
+  object-fit: cover;
+  width: 41px;
+}
+
+.text-field-outlined {
+  height: 56px;
+  margin-left: 987px;
+  width: 290px;
 }
 
 .body {
-  align-items: flex-end;
+  align-items: flex-start;
+  align-self: center;
   display: flex;
-  min-width: 1366px;
-  z-index: 1;
+  height: 555px;
+  justify-content: center;
+  margin-top: 82px;
+  min-width: 1240px;
 }
 
 .overlap-group {
-  height: 871px;
-  margin-bottom: 0;
+  height: 615px;
+  margin-top: -20px;
   position: relative;
-  width: 1366px;
-}
-
-.background {
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 871px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1366px;
+  width: 1300px;
 }
 
 .l-ist-of-jobs {
   cursor: pointer;
   height: 615px;
-  left: 673px;
+  left: 640px;
   object-fit: cover;
   position: absolute;
-  top: 138px;
+  top: 0;
   transition: all 0.2s ease;
   width: 660px;
 }
@@ -48,55 +63,12 @@
 .l-ist-of-jobs-1 {
   cursor: pointer;
   height: 615px;
-  left: 33px;
+  left: 0;
   object-fit: cover;
   position: absolute;
-  top: 138px;
+  top: 0;
   transition: all 0.2s ease;
   width: 660px;
-}
-
-.header {
-  align-items: flex-start;
-  display: flex;
-  height: 74px;
-  left: 0;
-  min-width: 1366px;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-}
-
-.overlap-group1 {
-  height: 74px;
-  position: relative;
-  width: 1366px;
-}
-
-.header-1 {
-  background-color: var(--swans-down);
-  height: 74px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1366px;
-}
-
-.text-field-outlined {
-  height: 56px;
-  left: 1096px;
-  position: absolute;
-  top: 9px;
-  width: 230px;
-}
-
-.icon-awesome-joget {
-  height: 41px;
-  left: 20px;
-  object-fit: cover;
-  position: absolute;
-  top: 16px;
-  width: 41px;
 }
 
 .text-field-outlined .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
@@ -126,4 +98,8 @@
 
 * {
   box-sizing: border-box;
+}
+
+.searchColor {
+  color: white !important;
 }
