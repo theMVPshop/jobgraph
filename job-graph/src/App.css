@@ -541,3 +541,12 @@
   height: 400px;
   width: 1000px;
 }
+
+.graph-box-color {
+  background-color: white;
+}
+
+.the-search-label {
+  color: white;
+  padding-right: 10px;
+}
