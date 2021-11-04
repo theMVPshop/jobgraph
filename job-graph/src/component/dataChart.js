@@ -1,5 +1,6 @@
 import React from 'react'
 import ChartView from './chartView';
+import { Line } from 'react-chart'
 
 
 function GraphChart() {
@@ -117,6 +118,7 @@ function GraphChart() {
         config
     );
     //#endregion
+    
     return (
         myChart
     )
