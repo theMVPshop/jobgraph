@@ -1,11 +1,10 @@
 import React from 'react'
 import ChartView from './chartView';
-import { Line } from 'react-chart'
+import { Line } from 'react-chartjs-2';
 
 
 function GraphChart() {
 
-    //#region Original JS
     //example db array
     const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
     const dataFriend2 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
@@ -16,16 +15,6 @@ function GraphChart() {
     const data2 = [];
     const data3 = [];
 
-    //amount of time in (unit of time here). Higher amounts give more data to increase amount of spikes
-    //time to display should be the amount of time stamps are available
-    var timeToDisplay = 100;
-    var startingAmount = 0;
-    for (let i = 0; i < timeToDisplay; i++) {
-        data.push({ x: i, y: dataFriend1[i] });
-        data2.push({ x: i, y: dataFriend2[i] });
-        data3.push({ x: i, y: dataFriend3[i] });
-    }
-
     //How long it takes for the data to reach the other side
     const totalDuration = 10000;
     const delayBetweenPoints = totalDuration / data.length;
@@ -33,8 +22,11 @@ function GraphChart() {
         : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
 
     const ctx = document.getElementById('chart').getContext('2d');
-    //set background color ctx.style.backgroundColor = 'rgba(255,0,0,255)';
 
+    //amount of time in (unit of time here). Higher amounts give more data to increase amount of spikes
+    //time to display should be the amount of time stamps are available
+    var timeToDisplay = 100;
+    var startingAmount = 0;
     //chart data
     const dataStream = {
         //this is for the little square that pops up when hovering over lines
@@ -117,12 +109,23 @@ function GraphChart() {
         document.getElementById('chart'),
         config
     );
-    //#endregion
+
+    //may have to put this somewhere else
+    for (let i = 0; i < timeToDisplay; i++) {
+        data.push({ x: i, y: dataFriend1[i] });
+        data2.push({ x: i, y: dataFriend2[i] });
+        data3.push({ x: i, y: dataFriend3[i] });
+    }
+
     
     return (
-        myChart
+        data, data2, data3,
+         dataFriend1, dataFriend2, dataFriend3,
+         totalDuration, delayBetweenPoints, previousY,
+         ctx, timeToDisplay, startingAmount, dataStream,
+         config, myChart
     )
-        
+      
 };
 
 export default GraphChart;
