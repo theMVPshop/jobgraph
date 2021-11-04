@@ -59,8 +59,10 @@ app.get("/jobs", (req, res) => {
 
     const job_count = await page.evaluate(() => {
       const elements = document.querySelector("#searchCountPages");
+      const innerElements = elements.innerText.split(" ");
+      const jobAmount = innerElements[3];
 
-      return elements.innerText;
+      return jobAmount;
     });
 
     db.query(
@@ -83,7 +85,19 @@ app.get("/jobs", (req, res) => {
   );
 });
 
-// const dailySearch = () => {};
+//********************************************* 3 */
+
+// Automate the daily searches
+
+// const dailySearch = () => {
+//   db.query("SELECT  FROM employees21.job_job_search", (err, result) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// };
 
 // setInterval("dailySearch()", 86400000);
 
