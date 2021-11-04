@@ -75,7 +75,7 @@ class JobSearch extends React.Component {
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
                   <span className="mdc-notched-outline__notch">
-                    <span className="mdc-floating-label" id="my-label-id">
+                    <span className="mdc-floating-label the-search-label" id="my-label-id">
                       Search
                     </span>
                   </span>
@@ -85,7 +85,7 @@ class JobSearch extends React.Component {
               </label>
             </div>
           </div>
-          <div className="total-sales" data-id="80c90be9-c788-492c-9463-203a8b062616">
+          <div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
             <div className="flex-row-1" data-id="an|i3Yffzl4">
               <div className="title" data-id="2ad8dd7a-bf2b-48ae-a664-d6cc9987f445">
                 {title}
