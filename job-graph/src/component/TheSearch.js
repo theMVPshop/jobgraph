@@ -1,5 +1,7 @@
 import React from 'react';
 import * as mdc from 'material-components-web';
+import ChartView from './ChartView';
+
 
 class TheSearch extends React.Component {
   render() {
@@ -87,7 +89,9 @@ class JobSearch extends React.Component {
               </label>
             </div>
           </div>
-          <div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
+           <ChartView/>        
+        
+          {/*<div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
             <div className="flex-row-1" data-id="an|i3Yffzl4">
               <div className="title" data-id="2ad8dd7a-bf2b-48ae-a664-d6cc9987f445">
                 {title}
@@ -101,7 +105,7 @@ class JobSearch extends React.Component {
                 </div>
                 <div className="icon" data-id="f55bdfa5-9912-4f3e-86c9-a1916a7ec853">
                   <img className="color" data-id="53910c9a-6c65-414f-912c-760800e2e700" src={color} />
-                </div>*/}
+                </div>
               </div>
             </div>
             <div className="legend" data-id="5d0b3861-0bfd-4c48-a32c-7ac859d3cb89">
@@ -272,7 +276,7 @@ class JobSearch extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
         </form>
       </div>
     );
