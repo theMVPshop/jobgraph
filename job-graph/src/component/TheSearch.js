@@ -75,13 +75,15 @@ class JobSearch extends React.Component {
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
                   <span className="mdc-notched-outline__notch">
-                    <span className="mdc-floating-label the-search-label" id="my-label-id">
+                    {/*<span className="mdc-floating-label the-search-label" id="my-label-id">
                       Search
-                    </span>
+                    </span>*/}
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
-                <input type="text" className="mdc-text-field__input" aria-labelledby="my-label-id" />
+                <input type="text"
+                placeholder="Search"
+                 className="mdc-text-field__input" aria-labelledby="my-label-id" />
               </label>
             </div>
           </div>
@@ -91,7 +93,7 @@ class JobSearch extends React.Component {
                 {title}
               </div>
               <div className="dropdown" data-id="f0567930-c7fd-431c-98c7-dd761eeed821">
-                <div
+                {/*<div
                   className="last-12-months poppins-normal-comet-14px"
                   data-id="b49b471f-5970-41b9-b837-855cccb65fca"
                 >
@@ -99,7 +101,7 @@ class JobSearch extends React.Component {
                 </div>
                 <div className="icon" data-id="f55bdfa5-9912-4f3e-86c9-a1916a7ec853">
                   <img className="color" data-id="53910c9a-6c65-414f-912c-760800e2e700" src={color} />
-                </div>
+                </div>*/}
               </div>
             </div>
             <div className="legend" data-id="5d0b3861-0bfd-4c48-a32c-7ac859d3cb89">
