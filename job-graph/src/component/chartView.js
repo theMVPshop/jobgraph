@@ -1,6 +1,5 @@
 import React from "react";
 import * as mdc from "material-components-web";
-import GraphChart from "./dataChart";
 
 class ChartView extends React.Component {
   componentDidMount() {
@@ -10,13 +9,10 @@ class ChartView extends React.Component {
   }
 
   render() {
-    GraphChart;
     return (
-
         <div className="chart-container ">
           <canvas id="chart"></canvas>
         </div>
-
     );
   }
 }
