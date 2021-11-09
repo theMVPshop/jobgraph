@@ -1,6 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import ChartView from "./chartView";
+import ChartView from "./ChartView";
 
 //example db array
 const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
@@ -115,4 +115,7 @@ for (let i = 0; i < timeToDisplay; i++) {
 }
 
 const LineChart = () => <Line data={dataStream} options={config} />;
+
+
+
 export default LineChart;

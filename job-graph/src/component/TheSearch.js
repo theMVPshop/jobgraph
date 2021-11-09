@@ -1,6 +1,6 @@
 import React from 'react';
 import * as mdc from 'material-components-web';
-import ChartView from './ChartView';
+import DataChart from './DataChart';
 
 
 class TheSearch extends React.Component {
@@ -89,7 +89,7 @@ class JobSearch extends React.Component {
               </label>
             </div>
           </div>
-           <ChartView/>        
+           <DataChart/>        
         
           {/*<div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
             <div className="flex-row-1" data-id="an|i3Yffzl4">
