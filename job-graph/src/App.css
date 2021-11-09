@@ -534,3 +534,19 @@
 * {
   box-sizing: border-box;
 }
+
+.chart-container {
+  padding-top: 10%;
+  padding-left: 20%;
+  height: 400px;
+  width: 1000px;
+}
+
+.graph-box-color {
+  background-color: white;
+}
+
+.the-search-label {
+  color: white;
+  padding-right: 10px;
+}

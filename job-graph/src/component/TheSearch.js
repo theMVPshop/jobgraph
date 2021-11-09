@@ -1,5 +1,7 @@
 import React from 'react';
 import * as mdc from 'material-components-web';
+import DataChart from './DataChart';
+
 
 class TheSearch extends React.Component {
   render() {
@@ -75,23 +77,27 @@ class JobSearch extends React.Component {
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
                   <span className="mdc-notched-outline__notch">
-                    <span className="mdc-floating-label" id="my-label-id">
+                    {/*<span className="mdc-floating-label the-search-label" id="my-label-id">
                       Search
-                    </span>
+                    </span>*/}
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
-                <input type="text" className="mdc-text-field__input" aria-labelledby="my-label-id" />
+                <input type="text"
+                placeholder="Search"
+                 className="mdc-text-field__input" aria-labelledby="my-label-id" />
               </label>
             </div>
           </div>
-          <div className="total-sales" data-id="80c90be9-c788-492c-9463-203a8b062616">
+           <DataChart/>        
+        
+          {/*<div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
             <div className="flex-row-1" data-id="an|i3Yffzl4">
               <div className="title" data-id="2ad8dd7a-bf2b-48ae-a664-d6cc9987f445">
                 {title}
               </div>
               <div className="dropdown" data-id="f0567930-c7fd-431c-98c7-dd761eeed821">
-                <div
+                {/*<div
                   className="last-12-months poppins-normal-comet-14px"
                   data-id="b49b471f-5970-41b9-b837-855cccb65fca"
                 >
@@ -270,7 +276,7 @@ class JobSearch extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
         </form>
       </div>
     );
