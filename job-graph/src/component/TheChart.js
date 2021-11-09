@@ -1,7 +1,10 @@
 import React from "react";
+import * as mdc from "material-components-web";
 import { Line } from "react-chartjs-2";
-import ChartView from "./ChartView";
 
+
+
+//#region Script
 //example db array
 const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
 const dataFriend2 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
@@ -12,7 +15,7 @@ const data = [];
 const data2 = [];
 const data3 = [];
 
-const ctx = ChartView.getElementById("chart").getContext("2d");
+
 
 //How long it takes for the data to reach the other side
 const totalDuration = 10000;
@@ -115,7 +118,35 @@ for (let i = 0; i < timeToDisplay; i++) {
 }
 
 const LineChart = () => <Line data={dataStream} options={config} />;
+//#endregion
 
+class TheChart extends React.Component {
+  componentDidMount() {
+    new mdc.textField.MDCTextField(
+      document.querySelector(".text-field-outlined .mdc-text-field")
+    );
+  }
 
+  render() {
 
-export default LineChart;
+    var thisObject = this;
+    //const ctx = myChart;
+
+    return (
+        <div className="chart-container ">
+          <h1>Chart View</h1>
+          <canvas id="chart">
+            ref={
+              function(myChart) {
+                thisObject.chart = myChart;
+              }
+            }
+          </canvas>
+        </div>
+    );
+  }
+
+  
+}
+
+export default TheChart;
