@@ -22,7 +22,17 @@ const db = mysql.createConnection({
 
 //****************************************** 1 */
 app.get("/", (req, res) => {
-  db.query("SELECT * FROM employees21.jobresults", (err, result) => {
+  db.query("SELECT * FROM employees21.job_results", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/search", (req, res) => {
+  db.query("SELECT * FROM employees21.job_search", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -40,16 +50,16 @@ app.get("/jobs", (req, res) => {
     const searchTerm = req.body.searchTerm;
     const timeStamp = new Date();
 
-    //adding client Data into database
-    db.query(
-      "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
-      [location, searchTerm, timeStamp],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
+    // //adding client Data into database
+    // db.query(
+    //   "INSERT INTO employees21.job_search (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
+    //   [location, searchTerm, timeStamp],
+    //   (err, result) => {
+    //     if (err) {
+    //       console.log(err);
+    //     }
+    //   }
+    // );
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -65,15 +75,15 @@ app.get("/jobs", (req, res) => {
       return jobAmount;
     });
 
-    db.query(
-      "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
-      [`${job_count}`],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
+    // db.query(
+    //   "INSERT INTO employees21.job_results (jobs) VALUES (?)",
+    //   [`${job_count}`],
+    //   (err, result) => {
+    //     if (err) {
+    //       console.log(err);
+    //     }
+    //   }
+    // );
 
     console.log("Job count:", job_count);
 
@@ -90,7 +100,7 @@ app.get("/jobs", (req, res) => {
 // Automate the daily searches
 
 // const dailySearch = () => {
-//   db.query("SELECT  FROM employees21.job_job_search", (err, result) => {
+//   db.query("SELECT * FROM employees21.job_search", (err, result) => {
 //     if (err) {
 //       console.log(err);
 //     } else {
