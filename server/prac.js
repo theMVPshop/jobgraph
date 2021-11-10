@@ -22,17 +22,7 @@ const db = mysql.createConnection({
 
 //****************************************** 1 */
 app.get("/", (req, res) => {
-  db.query("SELECT * FROM employees21.job_results", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
-
-app.get("/search", (req, res) => {
-  db.query("SELECT * FROM employees21.job_search", (err, result) => {
+  db.query("SELECT * FROM employees21.jobresults", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -50,16 +40,16 @@ app.get("/jobs", (req, res) => {
     const searchTerm = req.body.searchTerm;
     const timeStamp = new Date();
 
-    // //adding client Data into database
-    // db.query(
-    //   "INSERT INTO employees21.job_search (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
-    //   [location, searchTerm, timeStamp],
-    //   (err, result) => {
-    //     if (err) {
-    //       console.log(err);
-    //     }
-    //   }
-    // );
+    //adding client Data into database
+    db.query(
+      "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
+      [location, searchTerm, timeStamp],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -75,15 +65,15 @@ app.get("/jobs", (req, res) => {
       return jobAmount;
     });
 
-    // db.query(
-    //   "INSERT INTO employees21.job_results (jobs) VALUES (?)",
-    //   [`${job_count}`],
-    //   (err, result) => {
-    //     if (err) {
-    //       console.log(err);
-    //     }
-    //   }
-    // );
+    db.query(
+      "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
+      [`${job_count}`],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
 
     console.log("Job count:", job_count);
 
@@ -97,19 +87,82 @@ app.get("/jobs", (req, res) => {
 
 //********************************************* 3 */
 
-// Automate the daily searches
+app.get("/auto", (req, res) => {
+  db.query(
+    "SELECT job_location, job_search_term FROM employees21.jobsearch",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(
+          result.map((row) => {
+            return {
+              location: row.job_location,
+              searchTerm: row.job_search_term,
+              timeStamp: new Date(),
+            };
+          })
+        );
+      }
+    }
+  );
+});
+
+// *********************************
+
+//                                   Web scraping
+//  (async () => {
+//   const location = req.body.location;
+//   const searchTerm = req.body.searchTerm;
+//   const timeStamp = new Date();
+
+//   //adding client Data into database
+//   db.query(
+//     "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
+//     [location, searchTerm, timeStamp],
+//     (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//     }
+//   );
+
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
+//   await page.goto(
+//     `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
+//   );
+
+//   const job_count = await page.evaluate(() => {
+//     const elements = document.querySelector("#searchCountPages");
+//     const innerElements = elements.innerText.split(" ");
+//     const jobAmount = innerElements[3];
+
+//     return jobAmount;
+//   });
+
+//   db.query(
+//     "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
+//     [`${job_count}`],
+//     (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//     }
+//   );
+
+//   console.log("Job count:", job_count);
+
+//   await browser.close();
+// })();
+
+//                              Automate the daily searches
 
 // const dailySearch = () => {
-//   db.query("SELECT * FROM employees21.job_search", (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
+//
 // };
 
-// setInterval("dailySearch()", 86400000);
+// // setInterval("dailySearch()", 86400000);
 
 app.listen(port, () => {
   console.log(`Web server is listening on port ${port}!`);

@@ -1,11 +1,15 @@
-import React from 'react';
-import * as mdc from 'material-components-web';
-import TheChart from './TheChart';
-
+import React from "react";
+import * as mdc from "material-components-web";
+import TheChart from "./TheChart";
 
 class TheSearch extends React.Component {
   render() {
-    return <JobSearch {...jobSearchData} data-id="e16276be-0212-4994-bba1-30bdffe22f85:an-component-instance" />;
+    return (
+      <JobSearch
+        {...jobSearchData}
+        data-id="e16276be-0212-4994-bba1-30bdffe22f85:an-component-instance"
+      />
+    );
   }
 }
 
@@ -13,7 +17,9 @@ export default TheSearch;
 
 class JobSearch extends React.Component {
   componentDidMount() {
-    new mdc.textField.MDCTextField(document.querySelector(".text-field-outlined .mdc-text-field"));
+    new mdc.textField.MDCTextField(
+      document.querySelector(".text-field-outlined .mdc-text-field")
+    );
   }
 
   render() {
@@ -71,8 +77,15 @@ class JobSearch extends React.Component {
           method="post"
         >
           <div className="flex-row" data-id="an|JtLMjDRv">
-            <img className="icon-awesome-joget" data-id="cd4a3dcc-598b-4a23-9d43-819cc3abbc26" src={iconAwesomeJoget} />
-            <div className="text-field-outlined" data-id="2b771456-bb2c-4d8c-aeae-2350e2b0cd70">
+            <img
+              className="icon-awesome-joget"
+              data-id="cd4a3dcc-598b-4a23-9d43-819cc3abbc26"
+              src={iconAwesomeJoget}
+            />
+            <div
+              className="text-field-outlined"
+              data-id="2b771456-bb2c-4d8c-aeae-2350e2b0cd70"
+            >
               <label className="mdc-text-field mdc-text-field--outlined">
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
@@ -83,14 +96,17 @@ class JobSearch extends React.Component {
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
-                <input type="text"
-                placeholder="Search"
-                 className="mdc-text-field__input" aria-labelledby="my-label-id" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="mdc-text-field__input"
+                  aria-labelledby="my-label-id"
+                />
               </label>
             </div>
           </div>
-           <TheChart/>        
-        
+          <TheChart />
+
           {/*<div className="total-sales graph-box-color" data-id="80c90be9-c788-492c-9463-203a8b062616">
             <div className="flex-row-1" data-id="an|i3Yffzl4">
               <div className="title" data-id="2ad8dd7a-bf2b-48ae-a664-d6cc9987f445">
@@ -283,37 +299,49 @@ class JobSearch extends React.Component {
   }
 }
 
-
 class Online extends React.Component {
   render() {
     const { children, className } = this.props;
 
     return (
-      <div className={`online ${className || ""}`} data-id="f8623653-dcc2-4331-a98f-10a605275cdc">
-        <div className="shape" data-id="7fafde45-f659-435f-b09b-a5ca0eda5bf2"></div>
-        <div className="marketing-sales poppins-normal-comet-14px" data-id="de204645-e166-4fa4-9924-9ea7546a2b9c">
+      <div
+        className={`online ${className || ""}`}
+        data-id="f8623653-dcc2-4331-a98f-10a605275cdc"
+      >
+        <div
+          className="shape"
+          data-id="7fafde45-f659-435f-b09b-a5ca0eda5bf2"
+        ></div>
+        <div
+          className="marketing-sales poppins-normal-comet-14px"
+          data-id="de204645-e166-4fa4-9924-9ea7546a2b9c"
+        >
           {children}
         </div>
       </div>
     );
   }
 }
-
 
 class X800 extends React.Component {
   render() {
     const { children, className } = this.props;
 
     return (
-      <div className={`value-item-1 ${className || ""}`} data-id="6ed4acab-fc41-4c3a-99f2-2a2d0eee7cee">
-        <div className="number-1 poppins-normal-shadow-blue-14px" data-id="0e2a5eca-4fb4-4415-8ab9-84980470e016">
+      <div
+        className={`value-item-1 ${className || ""}`}
+        data-id="6ed4acab-fc41-4c3a-99f2-2a2d0eee7cee"
+      >
+        <div
+          className="number-1 poppins-normal-shadow-blue-14px"
+          data-id="0e2a5eca-4fb4-4415-8ab9-84980470e016"
+        >
           {children}
         </div>
       </div>
     );
   }
 }
-
 
 class WidgetsElementsChartGraphLineBar extends React.Component {
   render() {
@@ -329,7 +357,10 @@ class WidgetsElementsChartGraphLineBar extends React.Component {
           data-id="96ba22df-ab49-4f9c-a102-3c6ea19d39e0"
           src="https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/shape-10@1x.png"
         />
-        <div className="name poppins-normal-shadow-blue-13px" data-id="f4e72311-af7f-48b1-b43b-640b32409a66">
+        <div
+          className="name poppins-normal-shadow-blue-13px"
+          data-id="f4e72311-af7f-48b1-b43b-640b32409a66"
+        >
           {name}
         </div>
       </div>
@@ -337,13 +368,15 @@ class WidgetsElementsChartGraphLineBar extends React.Component {
   }
 }
 
-
 class WidgetsElementsChartGraphLineBar2 extends React.Component {
   render() {
     const { jan } = this.props;
 
     return (
-      <div className="widgets--eleme-graph-line-bar-7" data-id="e9585e98-9110-4b7d-b5ad-3e2ebdb15a1a">
+      <div
+        className="widgets--eleme-graph-line-bar-7"
+        data-id="e9585e98-9110-4b7d-b5ad-3e2ebdb15a1a"
+      >
         <img
           className="shape-2"
           data-id="e9a87c8a-8634-44b5-93f4-1018d84b3933"
@@ -357,21 +390,42 @@ class WidgetsElementsChartGraphLineBar2 extends React.Component {
   }
 }
 
-
 class TooltipPointerDown extends React.Component {
   render() {
     const { bg, x750, onlineSales, titlee } = this.props;
 
     return (
-      <div className="tooltip-pointer-down" data-id="daf10440-6c9c-44ec-aaef-33ba3c2cf184">
+      <div
+        className="tooltip-pointer-down"
+        data-id="daf10440-6c9c-44ec-aaef-33ba3c2cf184"
+      >
         <div className="overlap-group" data-id="an|x6aGV2MH">
-          <div className="tooltip-bg" data-id="77e989a5-0856-4694-a3a4-fe59d5edd59b">
-            <img className="bg" data-id="803dc32a-6a9f-40d6-a157-ddfbac73a568" src={bg} />
+          <div
+            className="tooltip-bg"
+            data-id="77e989a5-0856-4694-a3a4-fe59d5edd59b"
+          >
+            <img
+              className="bg"
+              data-id="803dc32a-6a9f-40d6-a157-ddfbac73a568"
+              src={bg}
+            />
           </div>
-          <div className="data-key" data-id="e89355a1-9fad-49c2-a717-5f3ed8aac6a0">
-            <div className="data" data-id="31222f58-10e7-47c7-b383-a77a141a30fd">
-              <div className="sales" data-id="71566701-8597-466e-bb90-1d20d4fb011a"></div>
-              <div className="x750 poppins-normal-vulcan-12px" data-id="9c846ed0-db4b-487e-8003-ff08ffa99736">
+          <div
+            className="data-key"
+            data-id="e89355a1-9fad-49c2-a717-5f3ed8aac6a0"
+          >
+            <div
+              className="data"
+              data-id="31222f58-10e7-47c7-b383-a77a141a30fd"
+            >
+              <div
+                className="sales"
+                data-id="71566701-8597-466e-bb90-1d20d4fb011a"
+              ></div>
+              <div
+                className="x750 poppins-normal-vulcan-12px"
+                data-id="9c846ed0-db4b-487e-8003-ff08ffa99736"
+              >
                 {x750}
               </div>
               <div
@@ -382,7 +436,10 @@ class TooltipPointerDown extends React.Component {
               </div>
             </div>
           </div>
-          <div className="titlee" data-id="aac2e8ea-16ec-40ef-95a1-08596418c15a">
+          <div
+            className="titlee"
+            data-id="aac2e8ea-16ec-40ef-95a1-08596418c15a"
+          >
             {titlee}
           </div>
         </div>
@@ -392,190 +449,194 @@ class TooltipPointerDown extends React.Component {
 }
 
 const onlineData = {
-    children: "Austin",
+  children: "Austin",
 };
 
 const online2Data = {
-    children: "San Marcos",
-    className: "offline",
+  children: "San Marcos",
+  className: "offline",
 };
 
 const x800Data = {
-    children: "800",
+  children: "800",
 };
 
 const x8002Data = {
-    children: "600",
+  children: "600",
 };
 
 const x8003Data = {
-    children: "400",
+  children: "400",
 };
 
 const x8004Data = {
-    children: "200",
-    className: "x200",
+  children: "200",
+  className: "x200",
 };
 
 const widgetsElementsChartGraphLineBarData = {
-    name: "Jan",
+  name: "Jan",
 };
 
 const widgetsElementsChartGraphLineBar2Data = {
-    name: "Feb",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Feb",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar3Data = {
-    name: "Mar",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Mar",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar4Data = {
-    name: "Apr",
-    className: "widgets--eleme-graph-line-bar-2-1",
+  name: "Apr",
+  className: "widgets--eleme-graph-line-bar-2-1",
 };
 
 const widgetsElementsChartGraphLineBar5Data = {
-    name: "May",
-    className: "widgets--eleme-graph-line-bar-3-1",
+  name: "May",
+  className: "widgets--eleme-graph-line-bar-3-1",
 };
 
 const widgetsElementsChartGraphLineBar6Data = {
-    name: "Jun",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Jun",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar7Data = {
-    name: "Jul",
-    className: "widgets--eleme-graph-line-bar-4-1",
+  name: "Jul",
+  className: "widgets--eleme-graph-line-bar-4-1",
 };
 
 const widgetsElementsChartGraphLineBar8Data = {
-    name: "Aug",
-    className: "widgets--eleme-graph-line-bar-5-1",
+  name: "Aug",
+  className: "widgets--eleme-graph-line-bar-5-1",
 };
 
 const widgetsElementsChartGraphLineBar22Data = {
-    jan: "Sep",
+  jan: "Sep",
 };
 
 const widgetsElementsChartGraphLineBar9Data = {
-    name: "Oct",
-    className: "widgets--eleme-graph-line-bar-2-2",
+  name: "Oct",
+  className: "widgets--eleme-graph-line-bar-2-2",
 };
 
 const widgetsElementsChartGraphLineBar10Data = {
-    name: "Nov",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Nov",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar11Data = {
-    name: "Dec",
-    className: "widgets--eleme-graph-line-bar-5-2",
+  name: "Dec",
+  className: "widgets--eleme-graph-line-bar-5-2",
 };
 
 const widgetsElementsChartGraphLineBar12Data = {
-    name: "Feb",
+  name: "Feb",
 };
 
 const widgetsElementsChartGraphLineBar13Data = {
-    name: "Mar",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Mar",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar14Data = {
-    name: "Apr",
-    className: "widgets--eleme-graph-line-bar-2-3",
+  name: "Apr",
+  className: "widgets--eleme-graph-line-bar-2-3",
 };
 
 const widgetsElementsChartGraphLineBar15Data = {
-    name: "May",
-    className: "widgets--eleme-graph-line-bar-3",
+  name: "May",
+  className: "widgets--eleme-graph-line-bar-3",
 };
 
 const widgetsElementsChartGraphLineBar16Data = {
-    name: "Jun",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Jun",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar17Data = {
-    name: "Jul",
-    className: "widgets--eleme-graph-line-bar-4",
+  name: "Jul",
+  className: "widgets--eleme-graph-line-bar-4",
 };
 
 const widgetsElementsChartGraphLineBar18Data = {
-    name: "Aug",
-    className: "widgets--eleme-graph-line-bar-5-3",
+  name: "Aug",
+  className: "widgets--eleme-graph-line-bar-5-3",
 };
 
 const widgetsElementsChartGraphLineBar19Data = {
-    name: "Sep",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Sep",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar20Data = {
-    name: "Oct",
-    className: "widgets--eleme-graph-line-bar-2",
+  name: "Oct",
+  className: "widgets--eleme-graph-line-bar-2",
 };
 
 const widgetsElementsChartGraphLineBar21Data = {
-    name: "Nov",
-    className: "widgets--eleme-graph-line-bar-1",
+  name: "Nov",
+  className: "widgets--eleme-graph-line-bar-1",
 };
 
 const widgetsElementsChartGraphLineBar23Data = {
-    name: "Dec",
-    className: "widgets--eleme-graph-line-bar-5",
+  name: "Dec",
+  className: "widgets--eleme-graph-line-bar-5",
 };
 
 const tooltipPointerDownData = {
-    bg: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/bg@1x.png",
-    x750: "576",
-    onlineSales: "Offline",
-    titlee: "September, 2019",
+  bg: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/bg@1x.png",
+  x750: "576",
+  onlineSales: "Offline",
+  titlee: "September, 2019",
 };
 
 const jobSearchData = {
-    iconAwesomeJoget: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/617b34ecf55934fe66e73092/img/icon-awesome-joget@1x.png",
-    title: "Job Location",
-    last12Months: "Last 12 Months",
-    color: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/color@1x.png",
-    x1K: "1000",
-    number: "0",
-    line: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line@1x.png",
-    line2: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-1@1x.png",
-    line3: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-2@1x.png",
-    line4: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-3@1x.png",
-    onlineProps: onlineData,
-    online2Props: online2Data,
-    x800Props: x800Data,
-    x8002Props: x8002Data,
-    x8003Props: x8003Data,
-    x8004Props: x8004Data,
-    widgetsElementsChartGraphLineBarPro: widgetsElementsChartGraphLineBarData,
-    widgetsElementsChartGraphLineBar2Pr: widgetsElementsChartGraphLineBar2Data,
-    widgetsElementsChartGraphLineBar3Pr: widgetsElementsChartGraphLineBar3Data,
-    widgetsElementsChartGraphLineBar4Pr: widgetsElementsChartGraphLineBar4Data,
-    widgetsElementsChartGraphLineBar5Pr: widgetsElementsChartGraphLineBar5Data,
-    widgetsElementsChartGraphLineBar6Pr: widgetsElementsChartGraphLineBar6Data,
-    widgetsElementsChartGraphLineBar7Pr: widgetsElementsChartGraphLineBar7Data,
-    widgetsElementsChartGraphLineBar8Pr: widgetsElementsChartGraphLineBar8Data,
-    widgetsElementsChartGraphLineBar2Pr2: widgetsElementsChartGraphLineBar22Data,
-    widgetsElementsChartGraphLineBar9Pr: widgetsElementsChartGraphLineBar9Data,
-    widgetsElementsChartGraphLineBar10P: widgetsElementsChartGraphLineBar10Data,
-    widgetsElementsChartGraphLineBar11P: widgetsElementsChartGraphLineBar11Data,
-    widgetsElementsChartGraphLineBar12P: widgetsElementsChartGraphLineBar12Data,
-    widgetsElementsChartGraphLineBar13P: widgetsElementsChartGraphLineBar13Data,
-    widgetsElementsChartGraphLineBar14P: widgetsElementsChartGraphLineBar14Data,
-    widgetsElementsChartGraphLineBar15P: widgetsElementsChartGraphLineBar15Data,
-    widgetsElementsChartGraphLineBar16P: widgetsElementsChartGraphLineBar16Data,
-    widgetsElementsChartGraphLineBar17P: widgetsElementsChartGraphLineBar17Data,
-    widgetsElementsChartGraphLineBar18P: widgetsElementsChartGraphLineBar18Data,
-    widgetsElementsChartGraphLineBar19P: widgetsElementsChartGraphLineBar19Data,
-    widgetsElementsChartGraphLineBar20P: widgetsElementsChartGraphLineBar20Data,
-    widgetsElementsChartGraphLineBar21P: widgetsElementsChartGraphLineBar21Data,
-    widgetsElementsChartGraphLineBar22P: widgetsElementsChartGraphLineBar23Data,
-    tooltipPointerDownProps: tooltipPointerDownData,
+  iconAwesomeJoget:
+    "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/617b34ecf55934fe66e73092/img/icon-awesome-joget@1x.png",
+  title: "Job Location",
+  last12Months: "Last 12 Months",
+  color:
+    "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/color@1x.png",
+  x1K: "1000",
+  number: "0",
+  line: "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line@1x.png",
+  line2:
+    "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-1@1x.png",
+  line3:
+    "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-2@1x.png",
+  line4:
+    "https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/6181db1900fc739048a5ea9c/img/line-3@1x.png",
+  onlineProps: onlineData,
+  online2Props: online2Data,
+  x800Props: x800Data,
+  x8002Props: x8002Data,
+  x8003Props: x8003Data,
+  x8004Props: x8004Data,
+  widgetsElementsChartGraphLineBarPro: widgetsElementsChartGraphLineBarData,
+  widgetsElementsChartGraphLineBar2Pr: widgetsElementsChartGraphLineBar2Data,
+  widgetsElementsChartGraphLineBar3Pr: widgetsElementsChartGraphLineBar3Data,
+  widgetsElementsChartGraphLineBar4Pr: widgetsElementsChartGraphLineBar4Data,
+  widgetsElementsChartGraphLineBar5Pr: widgetsElementsChartGraphLineBar5Data,
+  widgetsElementsChartGraphLineBar6Pr: widgetsElementsChartGraphLineBar6Data,
+  widgetsElementsChartGraphLineBar7Pr: widgetsElementsChartGraphLineBar7Data,
+  widgetsElementsChartGraphLineBar8Pr: widgetsElementsChartGraphLineBar8Data,
+  widgetsElementsChartGraphLineBar2Pr2: widgetsElementsChartGraphLineBar22Data,
+  widgetsElementsChartGraphLineBar9Pr: widgetsElementsChartGraphLineBar9Data,
+  widgetsElementsChartGraphLineBar10P: widgetsElementsChartGraphLineBar10Data,
+  widgetsElementsChartGraphLineBar11P: widgetsElementsChartGraphLineBar11Data,
+  widgetsElementsChartGraphLineBar12P: widgetsElementsChartGraphLineBar12Data,
+  widgetsElementsChartGraphLineBar13P: widgetsElementsChartGraphLineBar13Data,
+  widgetsElementsChartGraphLineBar14P: widgetsElementsChartGraphLineBar14Data,
+  widgetsElementsChartGraphLineBar15P: widgetsElementsChartGraphLineBar15Data,
+  widgetsElementsChartGraphLineBar16P: widgetsElementsChartGraphLineBar16Data,
+  widgetsElementsChartGraphLineBar17P: widgetsElementsChartGraphLineBar17Data,
+  widgetsElementsChartGraphLineBar18P: widgetsElementsChartGraphLineBar18Data,
+  widgetsElementsChartGraphLineBar19P: widgetsElementsChartGraphLineBar19Data,
+  widgetsElementsChartGraphLineBar20P: widgetsElementsChartGraphLineBar20Data,
+  widgetsElementsChartGraphLineBar21P: widgetsElementsChartGraphLineBar21Data,
+  widgetsElementsChartGraphLineBar22P: widgetsElementsChartGraphLineBar23Data,
+  tooltipPointerDownProps: tooltipPointerDownData,
 };
-
