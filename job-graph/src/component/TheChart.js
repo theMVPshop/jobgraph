@@ -151,7 +151,7 @@ class TheChart extends React.Component {
     return (
         <div className="chart-container ">
           <h1>Chart View</h1>
-          <canvas id="chart">
+          <canvas className="chart-container graph-box-color" id="chart">
             ref = {this.myRef}
           </canvas>
         </div>
