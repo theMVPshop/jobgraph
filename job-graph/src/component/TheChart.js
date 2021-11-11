@@ -4,7 +4,13 @@ import { Line } from "react-chartjs-2";
 
 
 
+
+//Link html with this code below
+
 //#region Script
+//DOM element
+//const element = this.myRef.current;
+//const ctx = element;
 //example db array
 const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
 const dataFriend2 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
@@ -14,7 +20,6 @@ const dataFriend3 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
 const data = [];
 const data2 = [];
 const data3 = [];
-
 
 
 //How long it takes for the data to reach the other side
@@ -121,6 +126,12 @@ const LineChart = () => <Line data={dataStream} options={config} />;
 //#endregion
 
 class TheChart extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.myRef= React.createRef();
+  }
+
   componentDidMount() {
     new mdc.textField.MDCTextField(
       document.querySelector(".text-field-outlined .mdc-text-field")
@@ -129,18 +140,19 @@ class TheChart extends React.Component {
 
   render() {
 
-    var thisObject = this;
+    /*ref={
+              function(myChart) {
+                thisObject.chart = myChart;
+              }
+            } */
+    
     //const ctx = myChart;
 
     return (
         <div className="chart-container ">
           <h1>Chart View</h1>
-          <canvas id="chart">
-            ref={
-              function(myChart) {
-                thisObject.chart = myChart;
-              }
-            }
+          <canvas className="chart-container graph-box-color" id="chart">
+            ref = {this.myRef}
           </canvas>
         </div>
     );
@@ -149,4 +161,4 @@ class TheChart extends React.Component {
   
 }
 
-export default TheChart;
+export default LineChart;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import * as mdc from "material-components-web";
 import TheChart from "./TheChart";
@@ -7,13 +8,24 @@ class TheSearch extends React.Component {
     return (
       <JobSearch
         {...jobSearchData}
+=======
+import React from 'react';
+import * as mdc from 'material-components-web';
+import LineChart from './TheChart'
+
+class App extends React.Component {
+  render() {
+    return (
+      <JobSearch
+        src="https://anima-uploads.s3.amazonaws.com/projects/6178a0ca67f4178eb43821b3/releases/617b34ecf55934fe66e73092/img/icon-awesome-joget@1x.png"
+>>>>>>> 7d9e6c857ccc5efd7c83cbe7eadf77cf86a5038a
         data-id="e16276be-0212-4994-bba1-30bdffe22f85:an-component-instance"
       />
     );
   }
 }
 
-export default TheSearch;
+export default App;
 
 class JobSearch extends React.Component {
   componentDidMount() {
@@ -23,48 +35,7 @@ class JobSearch extends React.Component {
   }
 
   render() {
-    const {
-      iconAwesomeJoget,
-      title,
-      last12Months,
-      color,
-      x1K,
-      number,
-      line,
-      line2,
-      line3,
-      line4,
-      onlineProps,
-      online2Props,
-      x800Props,
-      x8002Props,
-      x8003Props,
-      x8004Props,
-      widgetsElementsChartGraphLineBarPro,
-      widgetsElementsChartGraphLineBar2Pr,
-      widgetsElementsChartGraphLineBar3Pr,
-      widgetsElementsChartGraphLineBar4Pr,
-      widgetsElementsChartGraphLineBar5Pr,
-      widgetsElementsChartGraphLineBar6Pr,
-      widgetsElementsChartGraphLineBar7Pr,
-      widgetsElementsChartGraphLineBar8Pr,
-      widgetsElementsChartGraphLineBar2Pr2,
-      widgetsElementsChartGraphLineBar9Pr,
-      widgetsElementsChartGraphLineBar10P,
-      widgetsElementsChartGraphLineBar11P,
-      widgetsElementsChartGraphLineBar12P,
-      widgetsElementsChartGraphLineBar13P,
-      widgetsElementsChartGraphLineBar14P,
-      widgetsElementsChartGraphLineBar15P,
-      widgetsElementsChartGraphLineBar16P,
-      widgetsElementsChartGraphLineBar17P,
-      widgetsElementsChartGraphLineBar18P,
-      widgetsElementsChartGraphLineBar19P,
-      widgetsElementsChartGraphLineBar20P,
-      widgetsElementsChartGraphLineBar21P,
-      widgetsElementsChartGraphLineBar22P,
-      tooltipPointerDownProps,
-    } = this.props;
+    const { src } = this.props;
 
     return (
       <div className="container-center-horizontal">
@@ -76,6 +47,7 @@ class JobSearch extends React.Component {
           action="form1"
           method="post"
         >
+<<<<<<< HEAD
           <div className="flex-row" data-id="an|JtLMjDRv">
             <img
               className="icon-awesome-joget"
@@ -86,16 +58,22 @@ class JobSearch extends React.Component {
               className="text-field-outlined"
               data-id="2b771456-bb2c-4d8c-aeae-2350e2b0cd70"
             >
+=======
+          <div className="flex-row" data-id="an|i09j26ji">
+            <img className="icon-awesome-joget" data-id="cd4a3dcc-598b-4a23-9d43-819cc3abbc26" src={src} />
+            <div className="text-field-outlined" data-id="2b771456-bb2c-4d8c-aeae-2350e2b0cd70">
+>>>>>>> 7d9e6c857ccc5efd7c83cbe7eadf77cf86a5038a
               <label className="mdc-text-field mdc-text-field--outlined">
                 <span className="mdc-notched-outline">
                   <span className="mdc-notched-outline__leading"></span>
                   <span className="mdc-notched-outline__notch">
-                    {/*<span className="mdc-floating-label the-search-label" id="my-label-id">
-                      Search
-                    </span>*/}
+                    <span className="mdc-floating-label" id="my-label-id">
+                      
+                    </span>
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
+<<<<<<< HEAD
                 <input
                   type="text"
                   placeholder="Search"
@@ -293,10 +271,18 @@ class JobSearch extends React.Component {
               </div>
             </div>
           </div>*/}
+=======
+                <input type="text" placeholder="Search" className="mdc-text-field__input" aria-labelledby="my-label-id" />
+              </label>
+            </div>
+          </div>
+          <div className="rectangle-605 border-1px-dove-gray" data-id="83e96266-8eaf-418b-81dc-14249b7ad0f1"><LineChart/></div>
+>>>>>>> 7d9e6c857ccc5efd7c83cbe7eadf77cf86a5038a
         </form>
       </div>
     );
   }
+<<<<<<< HEAD
 }
 
 class Online extends React.Component {
@@ -640,3 +626,6 @@ const jobSearchData = {
   widgetsElementsChartGraphLineBar22P: widgetsElementsChartGraphLineBar23Data,
   tooltipPointerDownProps: tooltipPointerDownData,
 };
+=======
+}
+>>>>>>> 7d9e6c857ccc5efd7c83cbe7eadf77cf86a5038a
