@@ -1,164 +1,104 @@
-import React from "react";
-import * as mdc from "material-components-web";
-import { Line } from "react-chartjs-2";
+import React, { PureComponent } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+//testing data
+var testAverageSal = [50.000, 45.000,60.000,55.000,45.000,50.000,45.000,50.000,50.000,60.000,45.000];
+var testSavedJobsAmount = [100, 85, 110, 90, 95, 100, 105, 90, 80, 110];
+//x axis time stamp references
+var testSavedDates = ["01-15-2021","02-15-2021","03-15-2021","04-15-2021","05-15-2021","06-15-2021",
+"07-15-2021","08-15-2021","09-15-2021","10-15-2021"];
 
+var testingData = 50;
 
-
-//Link html with this code below
-
-//#region Script
-//DOM element
-//const element = this.myRef.current;
-//const ctx = element;
-//example db array
-const dataFriend1 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
-const dataFriend2 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
-const dataFriend3 = [10, 30, 40, 50, 60, 50, 40, 30, 30, 30, 10, 60, 50];
-
-//add extra data sets for all locations
-const data = [];
-const data2 = [];
-const data3 = [];
-
-
-//How long it takes for the data to reach the other side
-const totalDuration = 10000;
-const delayBetweenPoints = totalDuration / data.length;
-const previousY = (ctx) =>
-  ctx.index === 0
-    ? ctx.chart.scales.y.getPixelForValue(100)
-    : ctx.chart
-        .getDatasetMeta(ctx.datasetIndex)
-        .data[ctx.index - 1].getProps(["y"], true).y;
-
-//amount of time in (unit of time here). Higher amounts give more data to increase amount of spikes
-//time to display should be the amount of time stamps are available
-var timeToDisplay = 100;
-var startingAmount = 0;
-
-//chart data
-const dataStream = {
-  //this is for the little square that pops up when hovering over lines
-  datasets: [
-    {
-      borderColor: "red",
-      borderWidth: 1,
-      radius: 0,
-      data: data,
-    },
-    {
-      borderColor: "blue",
-      borderWidth: 1,
-      radius: 0,
-      data: data2,
-    },
-    {
-      borderColor: "purple",
-      borderWidth: 1,
-      radius: 0,
-      data: data3,
-    } /*, In case you forget how to add more data
-    {
-      borderColor: 'blue',
-      borderWidth: 1,
-      radius: 0,
-      data: data2,
-    }*/,
-  ],
-};
-//chart options
-const config = {
-  type: "line",
-  options: {
-    maintainAspectRatio: false,
-    responsive: true,
-    animation: {
-      x: {
-        type: "number",
-        easing: "linear",
-        duration: delayBetweenPoints,
-        from: NaN, // the point is initially skipped
-        delay(ctx) {
-          if (ctx.type !== "data" || ctx.xStarted) {
-            return 0;
-          }
-          ctx.xStarted = true;
-          return ctx.index * delayBetweenPoints;
-        },
-      },
-      y: {
-        type: "number",
-        easing: "linear",
-        duration: delayBetweenPoints,
-        from: previousY,
-        delay(ctx) {
-          if (ctx.type !== "data" || ctx.yStarted) {
-            return 0;
-          }
-          ctx.yStarted = true;
-          return ctx.index * delayBetweenPoints;
-        },
-      },
-    },
-    interaction: {
-      intersect: false,
-    },
-    plugins: {
-      legend: false,
-    },
-    scales: {
-      x: {
-        type: "linear",
-      },
-    },
+const data = [
+  {
+    name: testSavedDates[0],
+    test: testingData,
+    jobs: testSavedJobsAmount[0],
+    salaries:testAverageSal[0]
   },
-};
+  {
+    name: testSavedDates[1],
+    test: testingData,
+    jobs: testSavedJobsAmount[1],
+    salaries:testAverageSal[1]
+  },
+  {
+    name: testSavedDates[2],
+    test: testingData,
+    jobs: testSavedJobsAmount[2],
+    salaries:testAverageSal[2]
+  },
+  {
+    name: testSavedDates[3],
+    test: testingData,
+    jobs: testSavedJobsAmount[3],
+    salaries:testAverageSal[3]
+  },
+  {
+    name: testSavedDates[4],
+    test: testingData,
+    jobs: testSavedJobsAmount[4],
+    salaries:testAverageSal[4]
+  },
+  {
+    name: testSavedDates[5],
+    test: testingData,
+    jobs: testSavedJobsAmount[5],
+    salaries:testAverageSal[5]
+  },
+  {
+    name: testSavedDates[6],
+    test: testingData,
+    jobs: testSavedJobsAmount[6],
+    salaries:testAverageSal[6]
+  },
+  {
+    name: testSavedDates[7],
+    test: testingData,
+    jobs: testSavedJobsAmount[7],
+    salaries:testAverageSal[7]
+  },
+  {
+    name: testSavedDates[8],
+    test: testingData,
+    jobs: testSavedJobsAmount[8],
+    salaries:testAverageSal[8]
+  },
+  {
+    name: testSavedDates[9],
+    test: testingData,
+    jobs: testSavedJobsAmount[9],
+    salaries:testAverageSal[9]
+  },
+];
 
-//may have to put this somewhere else
-for (let i = 0; i < timeToDisplay; i++) {
-  data.push({ x: i, y: dataFriend1[i] });
-  data2.push({ x: i, y: dataFriend2[i] });
-  data3.push({ x: i, y: dataFriend3[i] });
-}
-
-const LineChart = () => <Line data={dataStream} options={config} />;
-//#endregion
-
-class TheChart extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.myRef= React.createRef();
-  }
-
-  componentDidMount() {
-    new mdc.textField.MDCTextField(
-      document.querySelector(".text-field-outlined .mdc-text-field")
-    );
-  }
+export default class LineGraph extends PureComponent {
 
   render() {
-
-    /*ref={
-              function(myChart) {
-                thisObject.chart = myChart;
-              }
-            } */
-    
-    //const ctx = myChart;
-
     return (
-        <div className="chart-container ">
-          <h1>Chart View</h1>
-          <canvas className="chart-container graph-box-color" id="chart">
-            ref = {this.myRef}
-          </canvas>
-        </div>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="jobs" stroke="#1997b5" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="salaries" stroke="#3444d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="test" stroke="#8004d8" />
+        </LineChart>
+      </ResponsiveContainer>
     );
   }
-
-  
 }
-
-export default LineChart;
