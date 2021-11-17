@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import axios from "axios";
 import {
   LineChart,
   Line,
@@ -79,6 +80,18 @@ for (var i = 0; i < dbArrayLength; i++) {
 }
 
 export default class LineGraph extends PureComponent {
+  state = {
+    data: [],
+  };
+
+  componentDidMount() {
+    axios.get(`http://localhost:4001/`).then((res) => {
+      const jobInfo = res.data;
+      this.setState({ jobInfo });
+      console.log(jobInfo);
+    });
+  }
+
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
