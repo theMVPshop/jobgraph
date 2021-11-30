@@ -85,7 +85,7 @@ export default class LineGraph extends PureComponent {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:4001/`).then((res) => {
+    axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
       const jobInfo = res.data;
       this.setState({ jobInfo });
       console.log(jobInfo);
