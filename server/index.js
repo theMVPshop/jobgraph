@@ -22,13 +22,16 @@ const db = mysql.createConnection({
 
 //****************************************** 1 */
 app.get("/", (req, res) => {
-  db.query("SELECT * FROM employees21.jobresults", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
+  db.query(
+    "SELECT idjob_search, job_location, job_search_term, time_stamp, jobs FROM employees21.jobsearch, employees21.jobresults  WHERE idjob_results = idjob_search",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
     }
-  });
+  );
 });
 
 //********************************************* 2 */
