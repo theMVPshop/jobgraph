@@ -25,7 +25,7 @@ function LineChartTwo() {
           labels: title,
           datasets: [
             {
-              label: ,
+              label: title,
               data: id,
               backgroundColor: [
                 "#3cb371",
