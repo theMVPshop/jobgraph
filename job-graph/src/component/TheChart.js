@@ -80,9 +80,12 @@ for (var i = 0; i < dbArrayLength; i++) {
 }
 
 export default class LineGraph extends PureComponent {
-  state = {
-    data: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      jobInfo: props.jobInfo,
+    };
+  }
 
   componentDidMount() {
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {

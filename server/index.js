@@ -9,8 +9,8 @@ const app = express();
 const port = process.env.PORT || 4001;
 
 app.use(express.json());
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cors());
 
 //  MySQL Database
 const db = mysql.createConnection({

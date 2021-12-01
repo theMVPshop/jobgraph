@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 
 //********************************************* 2 */
 
-app.get("/jobs", (req, res) => {
+app.post("/jobs", (req, res) => {
   // Web scraping
   (async () => {
     const location = req.body.location;
