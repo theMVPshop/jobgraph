@@ -1,49 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Bar, Line } from "react-chartjs-2";
-import axios from "axios";
+import React, {Component} from 'react';
+import { Line } from 'react-chartjs-2';
 
-function LineChartTwo() {
+class Chart extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      chartData:props.chartData
+    }
+  }
 
-  const [data, setData] = useState([]);
-  const [posts, setPosts] = useState([]);
+  static defaultProps = {
+    displayTitle:true,
+    displayLegend: true,
+    legendPosition:'right',
+    location:'City'
+  }
 
-  let title = [];
-  let id = [];
-  useEffect(() => {
-
-    axios.get("https://jobsearch-mysql.herokuapp.com/").then(res => {
-      const ipl = res.data;
-      setPosts(ipl);
-
-      ipl.forEach(record => {
-        title.push(record.title);
-        id.push(record.id);
-      });
-
-      setData({
-        Data: {
-          labels: title,
-          datasets: [
-            {
-              label: title,
-              data: id,
-              backgroundColor: [
-                "#3cb371",
-                "#0000FF",
-                "#1997b5"
-              ]
+  render(){
+    return (
+      <div>
+        
+        <Line
+          data={this.state.chartData}
+          options={{
+            title:{
+              display:this.props.displayTitle,
+              text:this.props.location,
+              fontSize:25
+            },
+            legend:{
+              display:this.props.displayLegend,
+              position:this.props.legendPosition
             }
-          ]
-        }
-      });
-    });
-  });
+          }}
+        />
 
-  return (
-    <div>
-      <Line data={data.Data} />
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
-export default LineChartTwo;
+export default Chart;

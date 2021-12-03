@@ -1,0 +1,17 @@
+{
+    "xd.globalEditor": false,
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "javascript"
+    ],
+    "spellright.parserByClass": {
+        "Log": {
+            "parser": "plain"
+        }
+    }
+}
