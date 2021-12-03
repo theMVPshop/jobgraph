@@ -19,13 +19,22 @@ var dbTimeStamp;
 //Link db to the corresponding areas
 //#region test db
 
-cityName = "Austin";
-jobName = "Programmer";
+cityName = "Austin, Tx";
+jobName = "Software";
+// cityName = this.state.jobInfo.filter(
+//   (city) => city.job_location === "dallas, tx"
+// );
+
+// jobName = this.state.jobInfo.filter(
+//   (jobTitle) => jobTitle.job_search_term === "software"
+// );
+
 dbJobs = [
   30, 25, 35, 38, 45, 50, 55, 80, 100, 90, 86, 80, 70, 75, 60, 70, 80, 90, 110,
   125, 150, 130, 150, 203, 232, 250, 255, 101, 107, 160, 200, 210, 246, 247,
   264, 255,
 ];
+
 dbTimeStamp = [
   "01-15-2021",
   "02-15-2021",
@@ -83,7 +92,7 @@ export default class LineGraph extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jobInfo: props.jobInfo,
+      jobInfo: [],
     };
   }
 
@@ -91,7 +100,13 @@ export default class LineGraph extends PureComponent {
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
       const jobInfo = res.data;
       this.setState({ jobInfo });
-      console.log(jobInfo);
+      console.log(
+        jobInfo.filter(
+          (job) =>
+            job.job_location === "dallas, tx" &&
+            job.job_search_term === "software"
+        )
+      );
     });
   }
 
