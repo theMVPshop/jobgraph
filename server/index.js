@@ -92,19 +92,100 @@ app.get("/jobs", (req, res) => {
 
 //********************************************* 3 */
 
-// Automate the daily searches
+// Automate a job search every week
+const weeklySearch = () => {
 
-// const dailySearch = () => {
-//   db.query("SELECT  FROM employees21.job_job_search", (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// };
+const cityNameArr = [
+  "houston, tx",
+  "san antonio, tx",
+  "dallas, tx",
+  "austin, tx",
+  "fort worth, tx",
+  "el paso, tx",
+  "arlington, tx",
+  "corpus christi, tx",
+  "plano, tx",
+  "laredo, tx",
+  "lubbock, tx",
+  "irving, tx",
+  "garland, tx",
+  "frisco, tx",
+  "mckinney, tx",
+  "amarillo, tx",
+  "grand prairie, tx",
+  "brownsville, tx",
+  "killeen, tx",
+  "midland, tx"
+];
 
-// setInterval("dailySearch()", 86400000);
+const jobTitleArr = [
+  "dental assistant",
+  "medical assistant",
+  "web developer",
+  "software engineer"
+];
+
+// For loop for the City and Job title
+for (const city of cityNameArr) {
+  for (const jobTitle of jobTitleArr) {
+    // add function for puppeteer 
+  console.log(city + jobTitle);
+
+  (async () => {
+    const location = city;
+    const searchTerm = jobTitle;
+    const timeStamp = new Date();
+
+    //adding client Data into database
+    db.query(
+      "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
+      [location, searchTerm, timeStamp],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
+
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(
+      `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
+    );
+
+    const job_count = await page.evaluate(() => {
+      const elements = document.querySelector("#searchCountPages");
+      const innerElements = elements.innerText.split(" ");
+      const jobAmount = innerElements[3];
+
+      return jobAmount;
+    });
+
+    db.query(
+      "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
+      [`${job_count}`],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
+
+    console.log("Job count:", job_count);
+
+    await browser.close();
+  })();
+
+  res.send(
+    "Your weekly job search has been successfully completed!"
+  );
+
+  }
+}
+
+
+setInterval(weeklySearch, 604800000);
+
 
 app.listen(port, () => {
   console.log(`Web server is listening on port ${port}!`);

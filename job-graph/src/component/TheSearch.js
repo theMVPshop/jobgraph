@@ -31,7 +31,7 @@ class JobSearch extends React.Component {
         <form
           className="job-search screen"
           data-id="e16276be-0212-4994-bba1-30bdffe22f85"
-          onClick="window.open('javascript:SubmitForm(%27form1%27)', '_self');"
+          onlick="window.open('javascript:SubmitForm(%27form1%27)', '_self');"
           name="form1"
           action="form1"
           method="post"
