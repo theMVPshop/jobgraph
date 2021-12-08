@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-var cityName;
+let cityName;
 var jobName;
 var dbJobs;
 var dbTimeStamp;
@@ -19,8 +19,10 @@ var dbTimeStamp;
 //Link db to the corresponding areas
 //#region test db
 
-cityName = "Austin, Tx";
-jobName = "Software";
+// cityName = this.state.jobInfo;
+
+// console.log(cityName);
+// jobName = "Software";
 // cityName = this.state.jobInfo.filter(
 //   (city) => city.job_location === "dallas, tx"
 // );
@@ -29,11 +31,11 @@ jobName = "Software";
 //   (jobTitle) => jobTitle.job_search_term === "software"
 // );
 
-dbJobs = [
-  30, 25, 35, 38, 45, 50, 55, 80, 100, 90, 86, 80, 70, 75, 60, 70, 80, 90, 110,
-  125, 150, 130, 150, 203, 232, 250, 255, 101, 107, 160, 200, 210, 246, 247,
-  264, 255,
-];
+// dbJobs = [
+//   30, 25, 35, 38, 45, 50, 55, 80, 100, 90, 86, 80, 70, 75, 60, 70, 80, 90, 110,
+//   125, 150, 130, 150, 203, 232, 250, 255, 101, 107, 160, 200, 210, 246, 247,
+//   264, 255,
+// ];
 
 dbTimeStamp = [
   "01-15-2021",
@@ -81,12 +83,12 @@ var dbArrayLength = dbElement[3].length;
 var data = [];
 
 //for loop for an iteration of the "length of elements" in our array
-for (var i = 0; i < dbArrayLength; i++) {
-  data.push({
-    timeStamp: dbTimeStamp,
-    Jobs: dbJobs[i],
-  });
-}
+// for (var i = 0; i < dbArrayLength; i++) {
+//   data.push({
+//     timeStamp: dbTimeStamp,
+//     Jobs: dbJobs[i],
+//   });
+// }
 
 export default class LineGraph extends PureComponent {
   constructor(props) {
@@ -100,13 +102,19 @@ export default class LineGraph extends PureComponent {
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
       const jobInfo = res.data;
       this.setState({ jobInfo });
-      console.log(
-        jobInfo.filter(
-          (job) =>
-            job.job_location === "dallas, tx" &&
-            job.job_search_term === "software"
-        )
-      );
+      // console.log(
+      //   jobInfo.filter(
+      //     (job) =>
+      //       job.job_location === "dallas, tx" &&
+      //       job.job_search_term === "software"
+      //   )
+      // );
+      cityName = jobInfo.filter((job) => job.job_location === "dallas, tx");
+
+      jobName = jobInfo.filter((job) => job.job_search_term === "software");
+
+      dbJobs = jobInfo.filter((job) => job.jobs);
+      console.log(dbJobs);
     });
   }
 

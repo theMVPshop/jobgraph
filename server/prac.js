@@ -20,100 +20,24 @@ const db = mysql.createConnection({
   database: process.env.DATABASE,
 });
 
-//Adding data to database
+// The below function grabs job information for several Texas cities and logs the data into database daily
 
-//****************************************** 1 */
-app.get("/", (req, res) => {
-  db.query(
-    "SELECT idjob_search, job_location, job_search_term, time_stamp, jobs FROM employees21.jobsearch, employees21.jobresults  WHERE idjob_results = idjob_search",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
-});
+//********************************************* 1 */
 
-//********************************************* 2 */
-
-app.get("/jobs", (req, res) => {
-  // Web scraping
-  (async () => {
-    const location = req.body.location;
-    const searchTerm = req.body.searchTerm;
-    const timeStamp = new Date();
-
-    //adding client Data into database
-    db.query(
-      "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
-      [location, searchTerm, timeStamp],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
-
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(
-      `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
-    );
-
-    const job_count = await page.evaluate(() => {
-      const elements = document.querySelector("#searchCountPages");
-      const innerElements = elements.innerText.split(" ");
-      const jobAmount = innerElements[3];
-
-      return jobAmount;
-    });
-
-    db.query(
-      "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
-      [`${job_count}`],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
-
-    console.log("Job count:", job_count);
-
-    await browser.close();
-  })();
-
-  res.send(
-    "Your request was submitted successfully, refer to console for results!"
-  );
-});
-
-//********************************************* 3 */
-
-app.get("/auto", (req, res) => {
+function getJobs() {
   const cityNameArr = [
     "houston, tx",
     "san antonio, tx",
     "dallas, tx",
     "austin, tx",
     "fort worth, tx",
-    "el paso, tx",
     "arlington, tx",
-    "corpus christi, tx",
     "plano, tx",
-    "laredo, tx",
-    "lubbock, tx",
     "irving, tx",
     "garland, tx",
     "frisco, tx",
     "mckinney, tx",
-    "amarillo, tx",
     "grand prairie, tx",
-    "brownsville, tx",
-    "killeen, tx",
-    "midland, tx",
   ];
 
   const jobTitleArr = [
@@ -123,13 +47,13 @@ app.get("/auto", (req, res) => {
     "software engineer",
   ];
 
-  // For loop for the City and Job title
-  for (const city of cityNameArr) {
-    for (const jobTitle of jobTitleArr) {
-      // add function for puppeteer
-      console.log(city + jobTitle);
+  // Loops through the array, grab the data, and stores each into the database
 
-      (async () => {
+  (async () => {
+    for (const city of cityNameArr) {
+      for (const jobTitle of jobTitleArr) {
+        // add function for puppeteer
+
         const location = city;
         const searchTerm = jobTitle;
         const timeStamp = new Date();
@@ -150,7 +74,6 @@ app.get("/auto", (req, res) => {
         await page.goto(
           `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
         );
-
         const job_count = await page.evaluate(() => {
           const elements = document.querySelector("#searchCountPages");
           const innerElements = elements.innerText.split(" ");
@@ -169,69 +92,15 @@ app.get("/auto", (req, res) => {
           }
         );
 
-        console.log("Job count:", job_count);
-
         await browser.close();
-      })();
+      }
     }
-  }
-});
+  })();
+}
+
+getJobs();
 
 // *********************************
-
-//                                   Web scraping
-//  (async () => {
-//   const location = req.body.location;
-//   const searchTerm = req.body.searchTerm;
-//   const timeStamp = new Date();
-
-//   //adding client Data into database
-//   db.query(
-//     "INSERT INTO employees21.jobsearch (job_location, job_search_term, time_stamp) VALUES (?,?,?)",
-//     [location, searchTerm, timeStamp],
-//     (err, result) => {
-//       if (err) {
-//         console.log(err);
-//       }
-//     }
-//   );
-
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   await page.goto(
-//     `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
-//   );
-
-//   const job_count = await page.evaluate(() => {
-//     const elements = document.querySelector("#searchCountPages");
-//     const innerElements = elements.innerText.split(" ");
-//     const jobAmount = innerElements[3];
-
-//     return jobAmount;
-//   });
-
-//   db.query(
-//     "INSERT INTO employees21.jobresults (jobs) VALUES (?)",
-//     [`${job_count}`],
-//     (err, result) => {
-//       if (err) {
-//         console.log(err);
-//       }
-//     }
-//   );
-
-//   console.log("Job count:", job_count);
-
-//   await browser.close();
-// })();
-
-//                              Automate the daily searches
-
-// const dailySearch = () => {
-//
-// };
-
-// // setInterval("dailySearch()", 86400000);
 
 app.listen(port, () => {
   console.log(`Web server is listening on port ${port}!`);
