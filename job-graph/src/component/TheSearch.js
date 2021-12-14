@@ -64,6 +64,28 @@ class JobSearch extends React.Component {
                   className="mdc-text-field__input"
                   aria-labelledby="my-label-id"
                 />
+                <select name="location" id="location">
+                  <option value="select">Please select city</option>
+                  <option value="houston, tx">houston, tx</option>
+                  <option value="san antonio, tx">san antonio, tx</option>
+                  <option value="dallas, tx">dallas, tx</option>
+                  <option value="austin, tx">austin, tx</option>
+                  <option value="fort worth, tx">fort worth, tx</option>
+                  <option value="arlington, tx">arlington, tx</option>
+                  <option value="plano, tx">plano, tx</option>
+                  <option value="irving, tx">irving, tx</option>
+                  <option value="garland, tx">garland, tx</option>
+                  <option value="frisco, tx">frisco, tx</option>
+                  <option value="mckinney, tx">mckinney, tx</option>
+                  <option value="grand prairie, tx">grand prairie, tx</option>
+                </select>
+                <select name="jobTitle" id="jobTitle">
+                  <option value="select">Please select Job title</option>
+                  <option value="dental assistant">dental assistant</option>
+                  <option value="medical assistant">medical assistant</option>
+                  <option value="web developer">web developer</option>
+                  <option value="software engineer">software engineer</option>
+                </select>
               </label>
             </div>
           </div>
