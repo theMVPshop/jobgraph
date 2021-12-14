@@ -1,14 +1,8 @@
-
-import './App.css';
-import TheSearch from './component/TheSearch';
-
+import "./App.css";
+import TheSearch from "./component/TheSearch";
 
 function App() {
-  return (
-   
-    <TheSearch/>
-  
-  );
+  return <TheSearch />;
 }
 
 export default App;
