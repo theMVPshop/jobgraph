@@ -1,14 +1,16 @@
 import React, { PureComponent } from "react";
 import axios from "axios";
 import {
+  BarChart,
   LineChart,
   Line,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  
 } from "recharts";
 
 let cityName;
@@ -36,7 +38,7 @@ var dbTimeStamp;
 //   125, 150, 130, 150, 203, 232, 250, 255, 101, 107, 160, 200, 210, 246, 247,
 //   264, 255,
 // ];
-
+let lineChartData = [];
 dbTimeStamp = [
   "01-15-2021",
   "02-15-2021",
@@ -80,8 +82,22 @@ var dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
 //amount of index's we are handling (Will be the amount of timestamps)
 var dbArrayLength = dbElement[3].length;
 //this data will be passed into <LineChart> and presented on screen
-var data = [];
-
+/*
+var dataToDisplay = [
+  {
+    Jobs: 2000,
+  },
+  {
+    Jobs: 3000,
+  },
+  {
+    Jobs: 2000,
+  },
+  {
+    Jobs: 3000,
+  },
+];
+*/
 //for loop for an iteration of the "length of elements" in our array
 // for (var i = 0; i < dbArrayLength; i++) {
 //   data.push({
@@ -89,6 +105,9 @@ var data = [];
 //     Jobs: dbJobs[i],
 //   });
 // }
+
+//#region 
+
 
 export default class LineGraph extends PureComponent {
   constructor(props) {
@@ -98,33 +117,58 @@ export default class LineGraph extends PureComponent {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    console.log("Accessing DidMount");
+    var returnThis = await this.GetData();
+    //returnThis=JSON.parse(returnThis);
+    this.setState(returnThis);
+  }
+    
+  GetData() {
+    console.log("Accessing GetData");
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
       const jobInfo = res.data;
       this.setState({ jobInfo });
-      // console.log(
-      //   jobInfo.filter(
-      //     (job) =>
-      //       job.job_location === "dallas, tx" &&
-      //       job.job_search_term === "software"
-      //   )
-      // );
+
       cityName = jobInfo.filter((job) => job.job_location === "dallas, tx");
 
       jobName = jobInfo.filter((job) => job.job_search_term === "software");
 
       dbJobs = jobInfo.filter((job) => job.jobs);
+      console.log("jobs:");
       console.log(dbJobs);
+
+      for(let i = 0; i < dbJobs.length - 1; i++)
+      {
+        dbTimeStamp[i] = dbJobs[i].time_stamp;
+      }
+      
+      dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
+      dbArrayLength = dbElement[3].length;
+
+      for (var i = 0; i < dbArrayLength; i++) {
+        lineChartData.push(
+          {
+            timeStamp: dbTimeStamp[i],
+            jobs: dbJobs[i].jobs,
+          },
+        );
+     }
+     console.log("lineChartData");
+     console.log(lineChartData);
     });
   }
 
   render() {
+    console.log("Accessing render");
     return (
+      
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
+        <BarChart
+          label="Job list"
           width={500}
           height={300}
-          data={data}
+          data={this.state.dbJobs}
           margin={{
             top: 5,
             right: 30,
@@ -133,18 +177,15 @@ export default class LineGraph extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="timeStamp" />
-          <YAxis name="hi" />
+          <XAxis dataKey={this.state.jobInfo.time_Stamp} />
+          <YAxis name="tbd" />
           <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="Jobs"
-            stroke="#1997b5"
-            activeDot={{ r: 8 }}
-          />
-        </LineChart>
+          
+          <Bar type="monotone" dataKey="jobs" stroke="#1997b5" activeDot={{ r: 16 }} />
+        </BarChart>
+
       </ResponsiveContainer>
+      
     );
   }
 }
