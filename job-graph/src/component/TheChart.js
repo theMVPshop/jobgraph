@@ -10,7 +10,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  
 } from "recharts";
 
 let cityName;
@@ -106,8 +105,7 @@ var dataToDisplay = [
 //   });
 // }
 
-//#region 
-
+//#region
 
 export default class LineGraph extends PureComponent {
   constructor(props) {
@@ -123,7 +121,7 @@ export default class LineGraph extends PureComponent {
     //returnThis=JSON.parse(returnThis);
     this.setState(returnThis);
   }
-    
+
   GetData() {
     console.log("Accessing GetData");
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
@@ -138,37 +136,33 @@ export default class LineGraph extends PureComponent {
       console.log("jobs:");
       console.log(dbJobs);
 
-      for(let i = 0; i < dbJobs.length - 1; i++)
-      {
+      for (let i = 0; i < dbJobs.length - 1; i++) {
         dbTimeStamp[i] = dbJobs[i].time_stamp;
       }
-      
+
       dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
       dbArrayLength = dbElement[3].length;
 
       for (var i = 0; i < dbArrayLength; i++) {
-        lineChartData.push(
-          {
-            timeStamp: dbTimeStamp[i],
-            jobs: dbJobs[i].jobs,
-          },
-        );
-     }
-     console.log("lineChartData");
-     console.log(lineChartData);
+        lineChartData.push({
+          timeStamp: dbTimeStamp[i],
+          jobs: dbJobs[i].jobs,
+        });
+      }
+      console.log("lineChartData");
+      console.log(lineChartData);
     });
   }
 
   render() {
     console.log("Accessing render");
     return (
-      
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart
+        <LineChart
           label="Job list"
           width={500}
           height={300}
-          data={this.state.dbJobs}
+          data={this.state.jobInfo}
           margin={{
             top: 5,
             right: 30,
@@ -177,15 +171,18 @@ export default class LineGraph extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={this.state.jobInfo.time_Stamp} />
+          <XAxis dataKey={this.state.jobInfo.jobs} />
           <YAxis name="tbd" />
           <Tooltip />
-          
-          <Bar type="monotone" dataKey="jobs" stroke="#1997b5" activeDot={{ r: 16 }} />
-        </BarChart>
 
+          <Line
+            type="monotone"
+            dataKey={this.state.jobInfo.time_stamp}
+            stroke="#1997b5"
+            activeDot={{ r: 4 }}
+          />
+        </LineChart>
       </ResponsiveContainer>
-      
     );
   }
 }

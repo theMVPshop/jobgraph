@@ -31,11 +31,12 @@ export default function PracticeChart() {
       <AreaChart
         width={500}
         height={400}
-        data={jobData.filter(
-          (job) =>
-            job.job_location === "dallas, tx" &&
-            job.job_search_term === "web developer"
-        )}
+        // data={jobData.filter(
+        //   (job) =>
+        //     job.job_location === "dallas, tx" &&
+        //     job.job_search_term === "web developer"
+        // )}
+        data={jobData}
         margin={{
           top: 10,
           right: 30,
