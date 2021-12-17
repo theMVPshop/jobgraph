@@ -75,7 +75,8 @@ function getJobs() {
         });
         const page = await browser.newPage();
         await page.goto(
-          `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`
+          `https://www.indeed.com/jobs?q=${searchTerm}&l=${location}&ts=1635198952737&rq=1&rsIdx=1&fromage=last&newcount=68`,
+          { waitUntil: "load", timeout: 0 }
         );
         const job_count = await page.evaluate(() => {
           const elements = document.querySelector("#searchCountPages");
