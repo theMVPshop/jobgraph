@@ -128,7 +128,7 @@ export default function PracticeChart() {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart
+      <LineChart>
          width={500}
          height={400}
         data = {lineChartData}/*{jobData.filter(
@@ -136,13 +136,13 @@ export default function PracticeChart() {
             job.job_location === "houston, tx" &&
             job.job_search_term === "web developer"
         )}*/
+
         margin={{
           top: 10,
           right: 30,
           left: 0,
           bottom: 0,
         }}
-      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time_stamp" />
         <YAxis />

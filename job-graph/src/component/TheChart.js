@@ -164,10 +164,15 @@ export default class LineGraph extends PureComponent {
     return (
       
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart
+        <LineChart
           label="Job list"
           width={500}
           height={300}
+
+          //                                                                      *READ ME
+          //this.state.jobInfo prints vertical lines
+          //this.state.lineChartData should print the data points, but draws a blank
+          //this.state must be used or else an error will occur
           data={this.state.jobInfo}
           margin={{
             top: 5,
@@ -181,9 +186,8 @@ export default class LineGraph extends PureComponent {
           <YAxis name="tbd" />
           <Tooltip />
           
-          <Bar type="monotone" dataKey="jobs" stroke="#1997b5" activeDot={{ r: 16 }} />
-        </BarChart>
-
+          <Line type="monotone" dataKey="jobs" stroke="#1997b5" activeDot={{ r: 16 }} />
+        </LineChart>
       </ResponsiveContainer>
       
     );
