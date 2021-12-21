@@ -1,7 +1,7 @@
 import React from "react";
 import * as mdc from "material-components-web";
-// import LineChart from "./TheChart";
-import PracticeChart from "./PracticeChart";
+ import LineChart from "./TheChart";
+//import PracticeChart from "./PracticeChart";
 // import Graph from "./thisIsGraph";
 
 class App extends React.Component {
@@ -93,7 +93,7 @@ class JobSearch extends React.Component {
             className="rectangle-605 border-1px-dove-gray"
             data-id="83e96266-8eaf-418b-81dc-14249b7ad0f1"
           >
-            <PracticeChart />
+            <LineChart />
           </div>
         </form>
       </div>

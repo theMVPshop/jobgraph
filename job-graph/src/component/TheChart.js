@@ -168,7 +168,7 @@ export default class LineGraph extends PureComponent {
           label="Job list"
           width={500}
           height={300}
-          data={this.state.dbJobs}
+          data={this.state.jobInfo}
           margin={{
             top: 5,
             right: 30,
