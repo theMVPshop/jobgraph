@@ -66,7 +66,7 @@ class JobSearch extends React.Component {
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
-                <input
+                {/*<input
                   type="text"
                   placeholder="Search"
                   className="mdc-text-field__input"
