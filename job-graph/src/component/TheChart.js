@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  
 } from "recharts";
 
 //filter variables
@@ -29,7 +28,6 @@ var dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
 var dbArrayLength;
 
 
-
 export default class LineGraph extends PureComponent {
   constructor(props) {
     super(props);
@@ -44,7 +42,7 @@ export default class LineGraph extends PureComponent {
     this.setState(returnThis);
   }
 
-//Fetch the data we need, according to the search terms, job type, and add them to state for further use
+  //Fetch the data we need, according to the search terms, job type, and add them to state for further use
   GetData() {
     //console.log("Accessing GetData");
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
@@ -133,13 +131,11 @@ export default class LineGraph extends PureComponent {
 
   render() {
     return (
-      
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           label="Job list"
           width={500}
           height={300}
-
           //                                                                      *READ ME
           //this.state.jobInfo prints vertical lines
           //this.state.lineChartData should print the data points, but draws a blank
@@ -156,11 +152,15 @@ export default class LineGraph extends PureComponent {
           <XAxis dataKey={XAxi} />
           <YAxis dataKey={YAxi} />
           <Tooltip />
-          
-          <Line type="monotone" dataKey="Jobs" stroke="#1997b5" activeDot={{ r: 8 }} />
+
+          <Line
+            type="monotone"
+            dataKey="Jobs"
+            stroke="#1997b5"
+            activeDot={{ r: 8 }}
+          />
         </LineChart>
       </ResponsiveContainer>
-      
     );
   }
 }
