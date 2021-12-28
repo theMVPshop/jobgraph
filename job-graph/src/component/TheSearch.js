@@ -1,7 +1,7 @@
 import React from "react";
 import * as mdc from "material-components-web";
- import LineChart from "./TheChart";
-//import PracticeChart from "./PracticeChart";
+import LineChart from "./TheChart";
+// import PracticeChart from "./PracticeChart";
 // import Graph from "./thisIsGraph";
 
 class App extends React.Component {
@@ -23,6 +23,14 @@ class JobSearch extends React.Component {
       document.querySelector(".text-field-outlined .mdc-text-field")
     );
   }
+  // Below is the functions to grab the selected value from the dropdown menus
+  submit = (event) => {
+    console.log(event.target.value);
+  };
+
+  submit2 = (event) => {
+    console.log(event.target.value);
+  };
 
   render() {
     const { src } = this.props;
@@ -64,7 +72,8 @@ class JobSearch extends React.Component {
                   className="mdc-text-field__input"
                   aria-labelledby="my-label-id"
                 />
-                <select name="location" id="location">
+                {/* Below are the selection options for the drop down menu */}
+                <select onChange={this.submit} name="location" id="location">
                   <option value="select">Please select city</option>
                   <option value="houston, tx">houston, tx</option>
                   <option value="san antonio, tx">san antonio, tx</option>
@@ -79,7 +88,7 @@ class JobSearch extends React.Component {
                   <option value="mckinney, tx">mckinney, tx</option>
                   <option value="grand prairie, tx">grand prairie, tx</option>
                 </select>
-                <select name="jobTitle" id="jobTitle">
+                <select onChange={this.submit2} name="jobTitle" id="jobTitle">
                   <option value="select">Please select Job title</option>
                   <option value="dental assistant">dental assistant</option>
                   <option value="medical assistant">medical assistant</option>

@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  
 } from "recharts";
 
 let cityName;
@@ -83,7 +82,6 @@ var dbArrayLength = dbElement[3].length;
 
 //#endregion
 
-
 export default class LineGraph extends PureComponent {
   constructor(props) {
     super(props);
@@ -98,8 +96,8 @@ export default class LineGraph extends PureComponent {
     //returnThis=JSON.parse(returnThis);
     this.setState(returnThis);
   }
-    
-/*
+
+  /*
       TODO
 
       Find correct format [[X]
@@ -108,7 +106,7 @@ export default class LineGraph extends PureComponent {
       
 */
 
-//Fetch the data we need, according to the search terms, job type, and add them to state for further use
+  //Fetch the data we need, according to the search terms, job type, and add them to state for further use
   GetData() {
     console.log("Accessing GetData");
     axios.get("https://jobsearch-mysql.herokuapp.com/").then((res) => {
@@ -118,56 +116,46 @@ export default class LineGraph extends PureComponent {
     });
   }
 
-  FilterData(){
+  FilterData() {}
 
+  AddData() {
+    cityName = this.state.jobInfo.filter(
+      (job) => job.job_location === "dallas, tx"
+    );
+
+    jobName = this.state.jobInfo.filter(
+      (job) => job.job_search_term === "software"
+    );
+
+    dbJobs = this.state.jobInfo.filter((job) => job.jobs);
+    console.log("jobs:");
+    console.log(dbJobs);
+
+    for (let i = 0; i < dbJobs.length - 1; i++) {
+      dbTimeStamp[i] = dbJobs[i].time_stamp;
+    }
+
+    dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
+    dbArrayLength = dbElement[3].length;
+
+    for (var i = 0; i < dbArrayLength; i++) {
+      lineChartData.push({
+        timeStamp: dbTimeStamp[i].slice(0, 9),
+        Jobs: parseFloat(dbJobs[i].jobs.replace(/,/g, "")),
+      });
+    }
+
+    this.setState({ lineChartData });
   }
-
-  AddData(){
-      cityName = this.state.jobInfo.filter((job) => job.job_location === "dallas, tx");
-
-      jobName = this.state.jobInfo.filter((job) => job.job_search_term === "software");
-
-      dbJobs = this.state.jobInfo.filter((job) => job.jobs);
-      console.log("jobs:");
-      console.log(dbJobs);
-
-      for(let i = 0; i < dbJobs.length - 1; i++)
-      {
-        dbTimeStamp[i] = dbJobs[i].time_stamp;
-      }
-      
-      dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
-      dbArrayLength = dbElement[3].length;
-
-      for (var i = 0; i < dbArrayLength; i++) {
-        lineChartData.push(
-          {
-            timeStamp: dbTimeStamp[i].slice(0, 9),
-            Jobs: parseFloat(dbJobs[i].jobs.replace(/,/g, '')),
-          },
-        );
-     }
-
-     this.setState({ lineChartData });
-
-     console.log("lineChartData");
-     console.log(lineChartData);
-  }
-
-  
-
-  
 
   render() {
     console.log("Accessing render");
     return (
-      
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           label="Job list"
           width={500}
           height={300}
-
           //                                                                      *READ ME
           //this.state.jobInfo prints vertical lines
           //this.state.lineChartData should print the data points, but draws a blank
@@ -184,11 +172,15 @@ export default class LineGraph extends PureComponent {
           <XAxis dataKey={this.state.jobInfo.time_stamp} />
           <YAxis dataKey={this.state.jobInfo.jobs} />
           <Tooltip />
-          
-          <Line type="monotone" dataKey="Jobs" stroke="#1997b5" activeDot={{ r: 8 }} />
+
+          <Line
+            type="monotone"
+            dataKey="Jobs"
+            stroke="#1997b5"
+            activeDot={{ r: 8 }}
+          />
         </LineChart>
       </ResponsiveContainer>
-      
     );
   }
 }
