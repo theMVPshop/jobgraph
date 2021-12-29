@@ -67,12 +67,17 @@ class JobSearch extends React.Component {
                   </span>
                   <span className="mdc-notched-outline__trailing"></span>
                 </span>
+<<<<<<< Updated upstream
                 <input
                   type="text"
                   placeholder="Search"
                   className="mdc-text-field__input"
                   aria-labelledby="my-label-id"
                 />
+=======
+              
+                {/* Below are the selection options for the drop down menu */}
+>>>>>>> Stashed changes
                 <select onChange={this.submit} name="location" id="location">
                   <option value="select">Please select city</option>
                   <option value="houston, tx">houston, tx</option>
