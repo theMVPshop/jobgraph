@@ -121,10 +121,12 @@ export default class LineGraph extends PureComponent {
   AddData() {
     cityName = this.state.jobInfo.filter(
       (job) => job.job_location === "dallas, tx"
+      // { this.props.jobLocation }
     );
 
     jobName = this.state.jobInfo.filter(
-      (job) => job.job_search_term === "software"
+      (job) => job.job_search_term === "web developer"
+      // { this.props.jobTitle }
     );
 
     dbJobs = this.state.jobInfo.filter((job) => job.jobs);
@@ -150,6 +152,8 @@ export default class LineGraph extends PureComponent {
 
   render() {
     console.log("Accessing render");
+    console.log(this.props.jobTitle);
+    console.log(this.props.jobLocation);
     return (
       <ResponsiveContainer width="100%" height="100%">
         <LineChart

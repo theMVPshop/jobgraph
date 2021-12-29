@@ -18,6 +18,16 @@ class App extends React.Component {
 export default App;
 
 class JobSearch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.submit = (event) => {
+      let location = event.target.value;
+    };
+
+    this.submit2 = (event) => {
+      const jobtitle = event.target.value;
+    };
+  }
   componentDidMount() {
     new mdc.textField.MDCTextField(
       document.querySelector(".text-field-outlined .mdc-text-field")
@@ -25,13 +35,6 @@ class JobSearch extends React.Component {
   }
 
   // Below is the functions to grab the selected value from the dropdown menus
-  submit = (event) => {
-    console.log(event.target.value);
-  };
-
-  submit2 = (event) => {
-    console.log(event.target.value);
-  };
 
   render() {
     const { src } = this.props;
@@ -102,7 +105,7 @@ class JobSearch extends React.Component {
             className="rectangle-605 border-1px-dove-gray"
             data-id="83e96266-8eaf-418b-81dc-14249b7ad0f1"
           >
-            <LineChart />
+            <LineChart jobTitle={this.submit2} jobLocation={this.submit} />
           </div>
         </form>
       </div>
