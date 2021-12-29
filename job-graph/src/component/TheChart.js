@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Label,
 } from "recharts";
 
 //filter variables
@@ -22,11 +23,9 @@ let dbTimeStamp = [];
 let lineChartData = [];
 
 //graph variables
-let XAxi;
 let YAxi;
 var dbElement = [cityName, jobName, dbJobs, dbTimeStamp];
 var dbArrayLength;
-
 
 export default class LineGraph extends PureComponent {
   constructor(props) {
@@ -53,6 +52,7 @@ export default class LineGraph extends PureComponent {
       /*city options: "houston, tx", "san antonio, tx", "dallas, tx", "austin, tx",
       "fort worth, tx", "arlington, tx", "plano, tx", "irving, tx", "garland, tx", "frisco, tx", "mckinney, tx" */
       /*job options: "dental assistant", "medical assistant", "web developer", "software engineer"*/
+
       cityNameFilter = "dallas, tx";
       jobNameFilter = "web developer";
 
@@ -70,7 +70,6 @@ export default class LineGraph extends PureComponent {
     3. Jobs
     4. Time stamps
     */
-
 
     cityName = this.state.jobInfo.filter((job) => job.job_location === cityNameFilter);
     console.log("city name");
@@ -107,16 +106,11 @@ export default class LineGraph extends PureComponent {
 
     dbArrayLength = dbElement[2].length;
 
-    //XAxi = dbArrayLength;
-    //YAxi = dbArrayLength;
-
       for (var i = 0; i < dbArrayLength; i++) {
         lineChartData.push(
           {
-            //take only the date from our timestamps
             timeStamp: dbTimeStamp[i],
-            //print the job amounts as numbers removing the comma
-            //Jobs: parseFloat(dbJobs[i].replace(/,/g, '')),
+
             Jobs: dbJobs[i],
           },
         );
@@ -136,21 +130,24 @@ export default class LineGraph extends PureComponent {
           label="Job list"
           width={500}
           height={300}
-          //                                                                      *READ ME
-          //this.state.jobInfo prints vertical lines
-          //this.state.lineChartData should print the data points, but draws a blank
-          //this.state must be used or else an error will occur
           data={this.state.lineChartData}
           margin={{
             top: 5,
             right: 30,
-            left: 20,
-            bottom: 5,
+            left: 30,
+            bottom: 20,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={XAxi} />
-          <YAxis dataKey={YAxi} />
+          <XAxis dataKey="timeStamp">
+              <Label value="Time Stamps" offset={0} position="bottom"
+               style={{ textAnchor: 'middle', fontSize: '140%', fill: 'rgba(0, 0, 0, 0.87)' }}/>
+          </XAxis>
+          
+          <YAxis dataKey={YAxi}>
+          <Label value="Jobs" offset={8} position="left"
+               style={{ textAnchor: 'middle', fontSize: '120%', fill: 'rgba(0, 0, 0, 0.87)' }}/>
+            </YAxis>
           <Tooltip />
 
           <Line
