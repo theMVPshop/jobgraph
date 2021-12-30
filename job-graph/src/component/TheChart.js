@@ -53,8 +53,11 @@ export default class LineGraph extends PureComponent {
       "fort worth, tx", "arlington, tx", "plano, tx", "irving, tx", "garland, tx", "frisco, tx", "mckinney, tx" */
       /*job options: "dental assistant", "medical assistant", "web developer", "software engineer"*/
 
-      cityNameFilter = "dallas, tx";
-      jobNameFilter = "web developer";
+      // cityNameFilter = this.props.jobLocation;
+      // jobNameFilter = this.props.jobTitle;
+
+      cityNameFilter = `${this.props.jobLocation}`;
+      jobNameFilter = `${this.props.jobTitle}`;
 
       //filter our data to the correct location and job type
       this.FilterData();
@@ -62,6 +65,8 @@ export default class LineGraph extends PureComponent {
       this.AddData();
     });
   }
+
+  addJobInfo() {}
 
   FilterData() {
     /*Filter
