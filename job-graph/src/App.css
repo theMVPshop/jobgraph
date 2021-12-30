@@ -1,87 +1,56 @@
 /************************* The Search ****************************/
 
-.job-search {
-  align-items: center;
-  background: linear-gradient(242.55deg, #0f2b69 40.51%, #808080 89.76%);
-  background-color: rgba(255,255,255,1.0);
+:root {
+  --primary-white: #ffffff;
+  --primary-dark: rgba(255,255,255, 0);
+}
+
+.header-wraper {
+  position: relative;
+  background: url('../src/images/wall-and-laptop-background.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  
+}
+
+nav a.nav-link {
+  letter-spacing: 0.0375rem;
   cursor: pointer;
+}
+
+nav ul li {
+  text-transform: uppercase;
+}
+
+.navbar-nav > li > a {
+  margin-right: 0.45rem;
+  margin-left: 0.45rem;
+  color: var(--primary-white) !important;
+  border-top: 0.1875rem solid var(--primary-dark);
+}
+
+.navbar-brand {
+  max-width: 17.25rem;
+  padding: 0 !important;
+  margin-left:  1.125rem !important;
+}
+
+.header-title {
+  color: var(--primary-white);
+  text-transform: uppercase;
+}
+
+.main-info {
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  
   flex-direction: column;
-  height: 871px;
-  padding: 20px 22.4px;
-  width: 1366px;
-}
-
-.flex-row {
-  align-items: flex-start;
-  display: flex;
-  height: 57px;
-  margin-right: 40.57px;
-  min-width: 1281px;
-}
-
-.icon-awesome-joget {
-  height: 41px;
-  object-fit: cover;
-  width: 41px;
-}
-
-.text-field-outlined {
-  align-self: flex-end;
-  height: 56px;
-  margin-left: 950px;
-  width: 290px;
-}
-
-.rectangle-605 {
-  background-color: var(--white);
-  height: 558px;
-  margin-top: 76px;
-  width: 1270px;
-}
-
-.text-field-outlined .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: var(--mdc-theme-primary);
-}
-
-
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-
-.screen a {
-  display: contents;
-  text-decoration: none;
-}
-
-.container-center-horizontal {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  pointer-events: none;
-  width: 100%;
-}
-
-.container-center-horizontal > * {
-  flex-shrink: 0;
-  pointer-events: auto;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-
-.chart-container {
-  padding-top: 10%;
-  padding-left: 20%;
-  height: 400px;
-  width: 1000px;
-}
-
-.graph-box-color {
-  background-color: white;
-}
-
-.the-search-label {
-  color: white;
-  padding-right: 10px;
+  align-items: center;
+  text-align: center;
+  
 }
