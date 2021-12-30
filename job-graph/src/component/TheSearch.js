@@ -20,12 +20,16 @@ export default App;
 class JobSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.submit = (event) => {
-      let location = event.target.value;
-    };
+    // this.submit = (event) => {
+    //   let location = event.target.value;
+    // };
 
-    this.submit2 = (event) => {
-      const jobtitle = event.target.value;
+    // this.submit2 = (event) => {
+    //   const jobtitle = event.target.value;
+    // };
+    this.state = {
+      selectLocation: "",
+      selectJobTitle: "",
     };
   }
   componentDidMount() {
@@ -33,6 +37,18 @@ class JobSearch extends React.Component {
       document.querySelector(".text-field-outlined .mdc-text-field")
     );
   }
+
+  // var LocationSelector = React.createClass({
+  //   getInitialState:function(){
+  //     return {selectValue:'Radish'};
+  // },
+  handleLocationChange = (e) => {
+    this.setState({ selectLocation: e.target.value });
+  };
+
+  handleJobTitleChange = (e) => {
+    this.setState({ selectJobTitle: e.target.value });
+  };
 
   // Below is the functions to grab the selected value from the dropdown menus
 
@@ -76,36 +92,47 @@ class JobSearch extends React.Component {
                   className="mdc-text-field__input"
                   aria-labelledby="my-label-id"
                 />
-                <select onChange={this.submit} name="location" id="location">
-                  <option value="select">Please select city</option>
-                  <option value="houston, tx">houston, tx</option>
-                  <option value="san antonio, tx">san antonio, tx</option>
-                  <option value="dallas, tx">dallas, tx</option>
-                  <option value="austin, tx">austin, tx</option>
-                  <option value="fort worth, tx">fort worth, tx</option>
-                  <option value="arlington, tx">arlington, tx</option>
-                  <option value="plano, tx">plano, tx</option>
-                  <option value="irving, tx">irving, tx</option>
-                  <option value="garland, tx">garland, tx</option>
-                  <option value="frisco, tx">frisco, tx</option>
-                  <option value="mckinney, tx">mckinney, tx</option>
-                  <option value="grand prairie, tx">grand prairie, tx</option>
-                </select>
-                <select onChange={this.submit2} name="jobTitle" id="jobTitle">
-                  <option value="select">Please select Job title</option>
-                  <option value="dental assistant">dental assistant</option>
-                  <option value="medical assistant">medical assistant</option>
-                  <option value="web developer">web developer</option>
-                  <option value="software engineer">software engineer</option>
-                </select>
               </label>
+              <select
+                // onChange={this.submit} name="location" id="location"
+                value={this.state.selectLocation}
+                onChange={this.handleLocationChange}
+              >
+                <option value="select">Please select city</option>
+                <option value="houston, tx">houston, tx</option>
+                <option value="san antonio, tx">san antonio, tx</option>
+                <option value="dallas, tx">dallas, tx</option>
+                <option value="austin, tx">austin, tx</option>
+                <option value="fort worth, tx">fort worth, tx</option>
+                <option value="arlington, tx">arlington, tx</option>
+                <option value="plano, tx">plano, tx</option>
+                <option value="irving, tx">irving, tx</option>
+                <option value="garland, tx">garland, tx</option>
+                <option value="frisco, tx">frisco, tx</option>
+                <option value="mckinney, tx">mckinney, tx</option>
+                <option value="grand prairie, tx">grand prairie, tx</option>
+              </select>
+              <select
+                // onChange={this.submit2} name="jobTitle" id="jobTitle"
+                value={this.state.selectJobTitle}
+                onChange={this.handleJobTitleChange}
+              >
+                <option value="select">Please select Job title</option>
+                <option value="dental assistant">dental assistant</option>
+                <option value="medical assistant">medical assistant</option>
+                <option value="web developer">web developer</option>
+                <option value="software engineer">software engineer</option>
+              </select>
             </div>
           </div>
           <div
             className="rectangle-605 border-1px-dove-gray"
             data-id="83e96266-8eaf-418b-81dc-14249b7ad0f1"
           >
-            <LineChart jobTitle={this.submit2} jobLocation={this.submit} />
+            <LineChart
+              jobTitle={this.state.selectJobTitle}
+              jobLocation={this.state.selectLocation}
+            />
           </div>
         </form>
       </div>
